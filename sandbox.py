@@ -15,12 +15,16 @@ def log_to_splunk(splunk, event):
 
 
 def main():
+
+    s_ip = os.getenv("SPLUNK_IP")
+    s_tok = os.getenv("SPLUNK_TOKEN")
+
     splunk = Splunk(
-        "86.13.172.122:8088", "1505a73b-59a0-4ebc-b491-d79d8ee8b994", verify=False, indexer_ack=False
+        s_ip, s_tok, verify=False, indexer_ack=True
     )
 
     log_to_splunk(splunk, "Starting IP TESTICLE")
-
+    print(f"{s_ip}   {s_tok}")
 
 
 
